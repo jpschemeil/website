@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Academic website of Jean Paul Schemeil, Ph.D. student in Mathematics at the University of Nottingham." />
+  <title>Jean Paul Schemeil | Mathematics</title>
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-soft: #f4efe8;
+      --ink: #172033;
+      --muted: #5e6876;
+      --accent: #9d2f34;
+      --accent-strong: #742025;
+      --accent-soft: #f8e8df;
+      --rule: #e4d8cc;
+      --shadow: 0 18px 45px rgba(23, 32, 51, 0.08);
+      --radius: 8px;
+      --max-width: 1120px;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fff 0%, var(--bg) 420px), var(--bg);
+      font-family: var(--serif);
+      line-height: 1.66;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(116, 32, 37, 0.3);
+    }
+
+    a:hover,
+    a:focus {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      font-family: var(--sans);
+    }
+
+    .brand {
+      color: var(--ink);
+      border: 0;
+      font-weight: 760;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.95rem;
+      flex-wrap: wrap;
+      font-size: 0.93rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      border: 0;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--accent-strong);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem 5rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+      gap: 2rem;
+      align-items: start;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.85rem;
+      color: var(--accent-strong);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.18;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 740px;
+      color: var(--ink);
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      font-weight: 500;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 1.25rem 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(1.1rem, 2vw, 1.34rem);
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.35rem;
+      font-family: var(--sans);
+      font-size: 0.94rem;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.25rem;
+      padding: 0.38rem 0.7rem;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--accent-strong);
+    }
+
+    .profile-card,
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card {
+      padding: 1.2rem;
+    }
+
+    .profile-photo {
+      min-height: 260px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(157, 47, 52, 0.13), rgba(23, 32, 51, 0.06)), var(--surface-soft);
+      border: 1px solid var(--rule);
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-note {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      font-family: var(--sans);
+      font-size: 0.94rem;
+    }
+
+    .contact-list li {
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      gap: 0.75rem;
+      padding: 0.62rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-list strong {
+      color: var(--ink);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    section {
+      scroll-margin-top: 6rem;
+    }
+
+    .section {
+      padding: clamp(1.35rem, 3vw, 2.15rem);
+      margin-bottom: 1.35rem;
+    }
+
+    .sidebar .section {
+      padding: 1.3rem;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: clamp(1.28rem, 2.2vw, 1.7rem);
+      letter-spacing: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0.5rem 0 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.48rem;
+      margin-top: 1.15rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.32rem 0.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 680;
+    }
+
+    .entry {
+      padding: 1rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .entry:first-of-type {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .meta {
+      margin-top: 0.22rem;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 0.92rem;
+    }
+
+    .publication {
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--rule);
+      background: var(--surface-soft);
+    }
+
+    .publication h3 {
+      font-size: 1.15rem;
+    }
+
+    .compact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .compact-list li {
+      padding: 0.78rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .compact-list li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .compact-list strong {
+      display: block;
+      font-family: var(--sans);
+      line-height: 1.32;
+    }
+
+    .compact-list span {
+      display: block;
+      margin-top: 0.25rem;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+    }
+
+    .travel-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .travel-list {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .travel-card {
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .travel-card:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .travel-card h3 {
+      font-size: 1.05rem;
+    }
+
+    .footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        max-width: 560px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      main {
+        padding-top: 2.4rem;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        gap: 0.55rem 0.85rem;
+      }
+
+      .travel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-list li {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top">Jean Paul Schemeil</a>
+      <div class="nav-links">
+        <a href="#research">Research</a>
+        <a href="#publications">Writings</a>
+        <a href="#talks">Talks</a>
+        <a href="#organisation">Organisation</a>
+        <a href="#travel">Travel</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Introduction">
+      <div>
+        <h1>Jean Paul Schemeil</h1>
+        <p class="subtitle">
+          I am a Ph.D. student in mathematics at the University of Nottingham, supervised by Prof. Alexander Vishik.
+        </p>
+        <div class="hero-links" aria-label="Academic links">
+          <a href="#publications">Writings</a>
+          <a href="#talks">Talks</a>
+          <a href="mailto:jeanpaul.schemeil@nottingham.ac.uk">Email</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" id="contact">
+        <div class="profile-photo">
+          <img src="profile-photo.jpg" alt="Portrait of Jean Paul Schemeil" />
+        </div>
+        <h2>Contact</h2>
+        <ul class="contact-list">
+          <li><strong>Email</strong><a href="mailto:jeanpaul.schemeil@nottingham.ac.uk">Email me</a></li>
+        </ul>
+      </aside>
+    </section>
+
+    <div class="layout">
+      <div class="content">
+        <section class="section" id="research">
+          <h2>Research</h2>
+          <p class="lead">
+            Broadly speaking, I am interested in the study of algebraic invariants in geometry and
+            topology. My current research focuses on motivic tensor-triangular geometry.
+          </p>
+          <div class="tags" aria-label="Research areas">
+            <span class="tag">Algebraic Geometry</span>
+            <span class="tag">Algebraic Topology</span>
+            <span class="tag">Tensor-Triangular Geometry</span>
+            <span class="tag">Motives</span>
+            <span class="tag">Quadratic Forms</span>
+          </div>
+        </section>
+
+        <section class="section" id="publications">
+          <h2>Writings</h2>
+          <article class="publication">
+            <h3>The motivic tt-geometry of real quadrics</h3>
+            <p class="meta">Preprint, 2026</p>
+            <p><a href="https://arxiv.org/abs/2603.26492">View on arXiv</a></p>
+          </article>
+        </section>
+
+        <section class="section" id="talks">
+          <h2>Talks</h2>
+          <article class="entry">
+            <h3>Motives of real quadrics and their tt-geometry</h3>
+            <p class="meta">UGA Algebra Seminar, University of Georgia · April 2026</p>
+          </article>
+          <article class="entry">
+            <h3>Voevodsky motives and their tensor-triangular geometry</h3>
+            <p class="meta">Warwick Junior Algebra Seminar, University of Warwick · February 2026</p>
+          </article>
+          <article class="entry">
+            <h3>The Zariski geometry on 2-rings and comparison to the Balmer spectrum</h3>
+            <p class="meta">Reading Seminar, University of Warwick · November 2025</p>
+          </article>
+          <article class="entry">
+            <h3>A point-free approach to fundamental groups</h3>
+            <p class="meta">Young Homotopy-theorist Seminar, online · November 2024</p>
+            <p><a href="https://www.youtube.com/watch?v=F0ZtyUHJ1Kc&amp;t=848s">Watch recording</a></p>
+          </article>
+        </section>
+
+        <section class="section" id="organisation">
+          <h2>Organisation</h2>
+          <article class="entry">
+            <h3>Motivic Midlands</h3>
+            <p class="meta">Summer school, University of Nottingham · September 2026</p>
+            <p>
+              Organised with Fraser Sparks a summer school on motives in algebraic geometry,
+              number theory, and tensor-triangular geometry.
+              Link to the <a href="https://sites.google.com/view/motivic-midlands/home">webiste</a> for more details.
+            </p>
+          </article>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <section class="section" id="education">
+          <h2>Education</h2>
+          <ul class="compact-list">
+            <li>
+              <strong>Ph.D. Mathematics</strong>
+              <span>University of Nottingham<br />December 2024 - present<br />Supervisor: Alexander Vishik</span>
+            </li>
+            <li>
+              <strong>Master of Mathematics</strong>
+              <span>University of Warwick<br />October 2020 - September 2024<br />Dissertation supervisor: Martin Gallauer</span>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <section class="section" id="travel">
+      <h2>Travel</h2>
+      <div class="travel-grid">
+        <div class="travel-list">
+          <article class="travel-card">
+            <h3>Motives in Montpellier</h3>
+            <p class="meta">Montpellier · January 2026</p>
+          </article>
+          <article class="travel-card">
+            <h3>Spectrums in Representation Theory of Algebras and Related Topics</h3>
+            <p class="meta">Osaka · December 2025</p>
+          </article>
+          <article class="travel-card">
+            <h3>Tensor Triangular Geometry and Interactions</h3>
+            <p class="meta">Oberwolfach · October 2025</p>
+          </article>
+          <article class="travel-card">
+            <h3>BrAG VII</h3>
+            <p class="meta">Nottingham · September 2025</p>
+          </article>
+          <article class="travel-card">
+            <h3>Motives, equivariant topology, and tt-geometry</h3>
+            <p class="meta">Warwick · September 2025</p>
+          </article>
+          <article class="travel-card">
+            <h3>Motives and Arithmetic Geometry</h3>
+            <p class="meta">Darmstadt · July 2025</p>
+          </article>
+          <article class="travel-card">
+            <h3>Recent Developments in Algebraic K-Theory</h3>
+            <p class="meta">Warwick · April 2025</p>
+          </article>
+          <article class="travel-card">
+            <h3>Motivic Homotopy Theory</h3>
+            <p class="meta">Regensburg · March 2025</p>
+          </article>
+        </div>
+
+        <aside class="section" id="upcoming-travel">
+          <h2>Upcoming Travel</h2>
+          <div class="travel-list">
+            <article class="travel-card">
+              <h3>Geometry of Motives</h3>
+              <p class="meta">Oberwolfach · January 2027</p>
+            </article>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Jean Paul Schemeil. Last updated May 2026.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
